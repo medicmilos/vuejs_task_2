@@ -42,7 +42,6 @@ export default {
       currentPage: 1,
       gists: [],
       loading: true,
-      authToken: "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",
       showAvatar: false,
       userAvatarUrl: null
     }
@@ -72,12 +71,7 @@ export default {
         "&per_page=" +
         this.perPage
 
-      fetch(url, {
-        headers: {
-          //auth token is needed, since api is limited on 60 requests per hour for non authorized users
-          Authorization: "token " + this.authToken
-        }
-      })
+      fetch(url)
         .then(response => response.json())
         .then(data => {
           this.gists = data
